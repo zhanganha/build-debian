@@ -61,7 +61,7 @@ touch $FILESYSTEM_ROOT/$PLATFORM_DIR/firsttime
 
 ## Build a basic Debian system by debootstrap
 echo '[INFO] Debootstrap...'
-sudo LANG=C debootstrap --variant=minbase --arch amd64 stretch $FILESYSTEM_ROOT http://////
+sudo LANG=C debootstrap --variant=minbase --arch amd64 stretch $FILESYSTEM_ROOT file:///home/zhanggl/develop/git/build-debian/target
 
 ## Config hostname and hosts, otherwise 'sudo ...' will complain 'sudo: unable to resolve host ...'
 sudo LANG=C chroot $FILESYSTEM_ROOT /bin/bash -c "echo '$HOSTNAME' > /etc/hostname"
@@ -113,7 +113,7 @@ sudo LANG=C DEBIAN_FRONTEND=noninteractive chroot $FILESYSTEM_ROOT apt-get -y in
 
 ## Create default user
 ## Note: user should be in the group with the same name, and also in sudo/docker group
-sudo LANG=C chroot $FILESYSTEM_ROOT useradd -G sudo, $USERNAME -c "$DEFAULT_USERINFO" -m -s /bin/bash
+sudo LANG=C chroot $FILESYSTEM_ROOT useradd -G sudo $USERNAME -c "$DEFAULT_USERINFO" -m -s /bin/bash
 ## Create password for the default user
 echo "$USERNAME:$PASSWORD" | sudo LANG=C chroot $FILESYSTEM_ROOT chpasswd
 
