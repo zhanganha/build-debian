@@ -61,7 +61,7 @@ touch $FILESYSTEM_ROOT/$PLATFORM_DIR/firsttime
 
 ## Build a basic Debian system by debootstrap
 echo '[INFO] Debootstrap...'
-sudo LANG=C debootstrap --variant=minbase --arch amd64 stretch $FILESYSTEM_ROOT file:///home/zhanggl/develop/git/build-debian/target
+sudo LANG=C debootstrap --variant=minbase --arch amd64 xenial $FILESYSTEM_ROOT file:///mnt/ubuntu
 
 ## Config hostname and hosts, otherwise 'sudo ...' will complain 'sudo: unable to resolve host ...'
 sudo LANG=C chroot $FILESYSTEM_ROOT /bin/bash -c "echo '$HOSTNAME' > /etc/hostname"
