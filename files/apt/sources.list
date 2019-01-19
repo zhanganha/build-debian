@@ -1,0 +1,2 @@
+deb  stretch main contrib non-free
+deb file:///mnt/ubuntu xenial main 
